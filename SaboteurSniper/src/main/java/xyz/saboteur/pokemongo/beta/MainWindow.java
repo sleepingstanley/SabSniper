@@ -484,7 +484,7 @@ public class MainWindow {
 	public void getGithubVersion() {
 		try {
 	        Properties p = new Properties();
-	        InputStream is = new URL("https://raw.githubusercontent.com/saboteurxyz/SabSniper/master/SabSniper/src/version").openStream();
+	        InputStream is = new URL("https://raw.githubusercontent.com/saboteurxyz/SabSniper/master/SaboteurSniper/src/main/resources/version").openStream();
 	        p.load(is);
 	        githubVersion = p.getProperty("version", "");
 	    } catch (Exception ignored) { }
