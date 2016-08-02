@@ -135,18 +135,24 @@ public class Login extends JFrame {
 		contentPane.add(typeBox, "4, 2, 3, 1, fill, default");
 		typeBox.addItemListener(i -> {
 			if(i.getItem().equals("PTC")) {
-				lblUsername.setText("Username:");
+				lblUsername.setVisible(true);
+				lblPassword.setVisible(true);
+				usernameField.setVisible(true);
+				passwordField.setVisible(true);
 				btnGetToken.setVisible(false);
 				tokenField.setVisible(false);
 				lblToken.setVisible(false);
 				setBounds(100, 100, 544, 300);
 				setLocationRelativeTo(null);
 			} else {
-				lblUsername.setText("Email:");
+				lblUsername.setVisible(false);
+				lblPassword.setVisible(false);
+				usernameField.setVisible(false);
+				passwordField.setVisible(false);
 				btnGetToken.setVisible(true);
 				tokenField.setVisible(true);
 				lblToken.setVisible(true);
-				setBounds(100, 100, 544, 324);
+				setBounds(100, 100, 544, 280);
 				setLocationRelativeTo(null);
 			}
 		});
@@ -207,6 +213,8 @@ public class Login extends JFrame {
 			minIVToSnipe.setEnabled(chckbxAutosnipe.isSelected() & chckbxEnabled.isSelected());
 			lblMinIv.setEnabled(chckbxAutosnipe.isSelected() & chckbxEnabled.isSelected());
 			chckbxEnabled.setEnabled(chckbxAutosnipe.isSelected());
+			if(!chckbxAutosnipe.isSelected())
+				MainWindow.captureQueue.clear();
 		});
 		
 		chckbxEnabled.addActionListener(a -> {

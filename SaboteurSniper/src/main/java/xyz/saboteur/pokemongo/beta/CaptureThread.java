@@ -34,17 +34,21 @@ public class CaptureThread extends Thread {
 	
 	public void addToQueue(CustomPokemon cp) {
 		if(queue.containsKey(cp)) {
-			log(Log.WARNING, cp.getType() + " @ " + cp.getLatitude() + ", " + cp.getLongitude() + " is already in snipe queue.");
+			log(Log.WARNING, cp.getType() + " @ " + cp.getLatitude() + ", " + cp.getLongitude() + " is already in capture queue.");
 			return;
 		}
 		queue.put(cp, 0);
-		log(Log.INFO, "Added " + cp.getType() + " @ " + cp.getLatitude() + ", " + cp.getLongitude() + " to snipe queue. (Position :" + queue.size() + ")");
+		log(Log.INFO, "Added " + cp.getType() + " @ " + cp.getLatitude() + ", " + cp.getLongitude() + " to capture queue. (Position :" + queue.size() + ")");
 	}
 	
 	public void addToCatch(CustomPokemon cp) {
 		if(!Boolean.parseBoolean(MainWindow.window.login.p.getProperty("autosnipe", "false"))) return;
 		queue/*pokemonToCatch*/.put(cp, 1);
-		log(Log.SUPPRESSED, "Added " + cp.getType() + " @ " + cp.getLatitude() + ", " + cp.getLongitude() + " to snipe queue. (Position :" + queue.size() + ")");
+		log(Log.SUPPRESSED, "Added " + cp.getType() + " @ " + cp.getLatitude() + ", " + cp.getLongitude() + " to capture queue. (Position :" + queue.size() + ")");
+	}
+	
+	public void clear() {
+		log(Log.WARNING, "Cleared capture queue");
 	}
 	
 	public void run() {
@@ -73,8 +77,7 @@ public class CaptureThread extends Thread {
 			}*/
 			CustomPokemon cPokemon = new ArrayList<>(queue.keySet()).get(0);
 			int reason = queue.get(cPokemon);
-			if(reason == 0)
-				log(Log.WARNING, "Selecting next queued pokemon: " + cPokemon.getType());
+			log(Log.WARNING, "Selecting next queued pokemon: " + cPokemon.getType());
 			PokemonGo go = MainWindow.getGo();
 			try {
 				go.setLocation(cPokemon.getLatitude(), cPokemon.getLongitude(), 1);
@@ -184,6 +187,5 @@ public class CaptureThread extends Thread {
 				log(Log.WARNING, "Try signing in and try again");
 			}
 		}
-	}
-	
+	}	
 }

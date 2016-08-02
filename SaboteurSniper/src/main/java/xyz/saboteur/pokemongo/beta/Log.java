@@ -3,7 +3,6 @@ package xyz.saboteur.pokemongo.beta;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public enum Log {
 	DEFAULT("white"), SUCCESS("green"), ERROR("red"), INFO("aqua"), WARNING("yellow"), SUPPRESSED("gray");
