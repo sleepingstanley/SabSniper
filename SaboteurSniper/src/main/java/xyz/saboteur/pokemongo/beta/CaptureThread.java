@@ -49,6 +49,7 @@ public class CaptureThread extends Thread {
 	
 	public void clear() {
 		log(Log.WARNING, "Cleared capture queue");
+		queue.clear();
 	}
 	
 	public void run() {
