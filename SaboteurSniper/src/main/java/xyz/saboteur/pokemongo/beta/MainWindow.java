@@ -10,7 +10,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -64,8 +63,6 @@ public class MainWindow {
 	static JScrollPane scrollPane;
 	public JLabel lblStatus;
 	private String version;
-	private DecimalFormat ivFormat = new DecimalFormat("0.00");
-	
 	public static MainWindow window;
 	
 	private static PokemonGo go;
@@ -340,7 +337,7 @@ public class MainWindow {
 			public void run() {
 				Socket socket;
 				try {
-					socket = IO.socket("http://spawns.sebastienvercammen.be:49002");
+					socket = IO.socket("http://spawns.sebastienvercammen.be:49005");
 				} catch (URISyntaxException e1) {
 					log(Log.ERROR, "Couldn't use socket. Try restarting the program?");
 					return;
