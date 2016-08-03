@@ -236,7 +236,7 @@ public class Login extends JFrame {
 			p.setProperty("username", usernameField.getText());
 			p.setProperty("password", passwordField.getText());
 			p.setProperty("unban", String.valueOf(chckbxForceUnban.isSelected()));
-			p.setProperty("captureConfirmation", String.valueOf(chckbxForceUnban.isSelected()));
+			p.setProperty("captureConfirmation", String.valueOf(chckbxCaptureConfirmation.isSelected()));
 			p.setProperty("autosnipeLoadPrev", String.valueOf(chckbxLoadPreviousAutosniping.isSelected()));
 			p.setProperty("autosnipe", String.valueOf(chckbxAutosnipe.isSelected()));
 			p.setProperty("queueDelay", queueDelay.getText());
