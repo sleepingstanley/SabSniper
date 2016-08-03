@@ -237,15 +237,19 @@ public class MainWindow {
 		possible.remove(PokemonId.NIDORAN_MALE);
 		Collections.sort(possible, (PokemonId p1, PokemonId p2)->p1.name().compareTo(p2.name()));
 		
+		List<String> pokemonz = new ArrayList<>();
+		for(PokemonId pId : possible)
+			pokemonz.add(WordUtils.capitalizeFully(pId.name().replace("_", " ")));
+		
 		JLabel lblType = new JLabel("Type:");
 		frame.getContentPane().add(lblType, "2, 2, right, default");
 		
-		JComboBox<String> comboBox = new JComboBox<>();
+		JComboBox<String> comboBox = new AutoComboBox(pokemonz);
 		comboBox.setMaximumRowCount(25);
 		comboBox.setEditable(true);
 		frame.getContentPane().add(comboBox, "4, 2, fill, fill");
-		for(PokemonId pId : possible)
-			comboBox.addItem(WordUtils.capitalizeFully(pId.name().replace("_", " ")));
+		/*for(PokemonId pId : possible)
+			comboBox.addItem(WordUtils.capitalizeFully(pId.name().replace("_", " ")));*/
 		
 		JLabel lblCoordinates = new JLabel("Coordinates:");
 		frame.getContentPane().add(lblCoordinates, "2, 4, right, default");

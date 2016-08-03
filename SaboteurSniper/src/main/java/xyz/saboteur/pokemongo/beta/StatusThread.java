@@ -33,7 +33,7 @@ public class StatusThread extends Thread {
 				int seconds = totalSecs % 60;
 
 				String runTime = String.format("%02d:%02d:%02d", hours, minutes, seconds);
-				MainWindow.window.lblStatus.setText(data.getUsername() + " - Lv." + stats.getLevel() + " | Stardust: " + commaFormat.format(go.getPlayerProfile().getCurrency(Currency.STARDUST)) + " | Pokemon: " + go.getInventories().getPokebank().getPokemons().size() + "/" + data.getMaxPokemonStorage() + " | Items: " + go.getInventories().getItemBag().getItemsCount() + "/" + data.getMaxItemStorage() + " | Program Runtime: " + runTime);
+				MainWindow.window.lblStatus.setText(data.getUsername() + " - Lv." + stats.getLevel() + " | Stardust: " + commaFormat.format(go.getPlayerProfile().getCurrency(Currency.STARDUST)) + " | Pokemon: " + go.getInventories().getPokebank().getPokemons().size() + "/" + data.getMaxPokemonStorage() + " | Items: " + go.getInventories().getItemBag().getItemsCount() + "/" + data.getMaxItemStorage() + " | Program Runtime: " + runTime + " | Queue: " + MainWindow.captureQueue.size());
 				Thread.sleep(1000);
 			} catch(Exception ignored) { }
 		}

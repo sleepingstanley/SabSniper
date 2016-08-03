@@ -52,6 +52,10 @@ public class CaptureThread extends Thread {
 		queue.clear();
 	}
 	
+	public int size() {
+		return queue.size();
+	}
+	
 	public void run() {
 		while(true) {
 			if(MainWindow.getGo() == null || queue.isEmpty()) {
