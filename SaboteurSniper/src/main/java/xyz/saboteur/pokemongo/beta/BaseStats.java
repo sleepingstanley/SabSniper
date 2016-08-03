@@ -1,4 +1,4 @@
-package xyz.saboteur.pokemongo;
+package xyz.saboteur.pokemongo.beta;
 
 public class BaseStats {
 	public int baseAttack, baseDefense, baseStamina;

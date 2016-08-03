@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -35,6 +37,7 @@ import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -335,13 +338,16 @@ public class MainWindow {
 		
 		log(Log.SUCCESS, "SabSniper v" + version + " | Website: http://saboteur.xyz | Discord: <u>https://discord.gg/KX7EvX2</u>");
 		log(Log.WARNING, "GitHub URL: <u>https://github.com/saboteurxyz/SabSniper</u> | Latest version: " + githubVersion);
+		getPort();
+		log(Log.WARNING, "Grabbed spawn server port: " + port);
 		
 		new Thread() {
 			
 			public void run() {
 				Socket socket;
 				try {
-					socket = IO.socket("http://spawns.sebastienvercammen.be:49005");
+					getPort();
+					socket = IO.socket("http://spawns.sebastienvercammen.be:" + port);
 				} catch (URISyntaxException e1) {
 					log(Log.ERROR, "Couldn't use socket. Try restarting the program?");
 					return;
@@ -387,6 +393,7 @@ public class MainWindow {
 			}
 			
 		}.start();
+		getPort();
 	}
 	
 	/*public void tryCapture(String type, String latlong) {
@@ -480,8 +487,16 @@ public class MainWindow {
 		}
 	}*/
 	
-	private String githubVersion;
+	private String githubVersion, port;	
 	
+	public void getPort() {
+		try {
+			String s = IOUtils.toString(new URL("http://www.pokespawns.be/js/app.min.js"), "UTF-8");
+			Matcher m = Pattern.compile("port=(.*?);").matcher(s);
+			m.find();
+			port = m.group(1);
+	    } catch (Exception ignored) { }
+	}
 	public void getGithubVersion() {
 		try {
 	        Properties p = new Properties();
@@ -490,6 +505,8 @@ public class MainWindow {
 	        githubVersion = p.getProperty("version", "");
 	    } catch (Exception ignored) { }
 	}
+	
+	
 	
 	public void checkForUpdates() {
 		SwingUtilities.invokeLater(() -> {

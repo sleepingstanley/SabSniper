@@ -15,7 +15,7 @@ public enum Log {
 	
 	public void log(String message) {
 		try {
-			MainWindow.kit.insertHTML(MainWindow.doc, MainWindow.doc.getLength(), String.format("<font style='font-size: 11px; color: %s;'>%s</font><br />", color, dateFormat.format(Calendar.getInstance().getTime()) + message), 0, 0, null);
+			MainWindow.kit.insertHTML(MainWindow.doc, MainWindow.doc.getLength(), String.format("<font style='font-family: Comic Sans MS; font-size: 11px; color: %s;'>%s</font><br />", color, dateFormat.format(Calendar.getInstance().getTime()) + message), 0, 0, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

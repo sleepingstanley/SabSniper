@@ -1,4 +1,4 @@
-package xyz.saboteur.pokemongo;
+package xyz.saboteur.pokemongo.beta;
 
 import POGOProtos.Data.PokemonDataOuterClass.PokemonData;
 import POGOProtos.Enums.PokemonIdOuterClass.PokemonId;

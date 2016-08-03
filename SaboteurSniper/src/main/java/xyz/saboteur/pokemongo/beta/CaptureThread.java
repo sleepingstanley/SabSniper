@@ -21,7 +21,6 @@ import com.pokegoapi.api.map.pokemon.encounter.NormalEncounterResult;
 
 import POGOProtos.Data.PokemonDataOuterClass.PokemonData;
 import POGOProtos.Inventory.Item.ItemIdOuterClass.ItemId;
-import xyz.saboteur.pokemongo.StatsUtil;
 
 public class CaptureThread extends Thread {
 	

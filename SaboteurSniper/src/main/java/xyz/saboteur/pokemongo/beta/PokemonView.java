@@ -24,8 +24,6 @@ import org.apache.commons.lang3.text.WordUtils;
 import com.pokegoapi.api.PokemonGo;
 import com.pokegoapi.api.pokemon.Pokemon;
 
-import xyz.saboteur.pokemongo.StatsUtil;
-
 public class PokemonView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
